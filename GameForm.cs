@@ -83,51 +83,24 @@ namespace WindowsFormsApplication2
                 receiveFromClient = server.Receive(ref RemoteIpEndPoint);
                 temp1 = Encoding.ASCII.GetString(receiveFromClient);
                 values.Add(temp1);
-                if (bp.InvokeRequired)
-                {
-                    MethodInvoker methodInvokerDelegate = delegate()
-                    {
-                        for (int i = 0; i < values.Count; i++)
-                        {
-                            switch (int.Parse(values[i]))
-                            {
-                                case 1000: Environment.Exit(0); break;//exit
 
-                                case 1001: bp.restart(); values.RemoveAt(i); break;//restart
-                                case 1002: bp.start = false; values.RemoveAt(i); break;//pause
-                                case 1003: bp.start = true; values.RemoveAt(i); break;//resume
-                                case 1004: if (bp.lvl < 10) bp.nextlvl(); values.RemoveAt(i); break;//cheat
-                                case 1005:
-                                    bp.start = true;
-                                    if (bp.nbricks == 0) bp.nextlvl(); values.RemoveAt(i); break;//next level
-                             //   case 1006: bp.ballx2 = int.Parse(Encoding.ASCII.GetString(server.Receive(ref RemoteIpEndPoint)));
-                               //     bp.bally2 = int.Parse(Encoding.ASCII.GetString(server.Receive(ref RemoteIpEndPoint))); break;
-                                default: bp.player2 = int.Parse(values[i]); values.RemoveAt(i); break;
-                            }
-                        }
-                    };
-                }
-                else
+
+                for (int i = 0; i < values.Count; i++)
                 {
-                    for (int i = 0; i < values.Count; i++)
+                    switch (int.Parse(values[i]))
                     {
-                        switch (int.Parse(values[i]))
-                        {
-                            case 1000: Environment.Exit(0); break;
-                            case 1001: bp.restart(); values.RemoveAt(i); break;//restart
-                            case 1002: bp.start = false; values.RemoveAt(i); break;//pause
-                            case 1003: bp.start = true; values.RemoveAt(i); break;//resume
-                            case 1004: if (bp.lvl < 10) bp.nextlvl(); values.RemoveAt(i); break;//cheat
-                            case 1005:
-                                bp.start = true;
-                                if (bp.nbricks == 0) bp.nextlvl(); values.RemoveAt(i); break;//next level
-                         //   case 1006: bp.ballx2 = int.Parse(Encoding.ASCII.GetString(server.Receive(ref RemoteIpEndPoint)));
-                           //     bp.bally2 = int.Parse(Encoding.ASCII.GetString(server.Receive(ref RemoteIpEndPoint))); break;
-                            default: bp.player2 = int.Parse(values[i]); values.RemoveAt(i); break;
-                        }
+                        case 1000: Environment.Exit(0); break;
+                        case 1001: bp.restart(); values.RemoveAt(i); break;//restart
+                        case 1002: bp.start = false; values.RemoveAt(i); break;//pause
+                        case 1003: bp.start = true; values.RemoveAt(i); break;//resume
+                        case 1004: if (bp.lvl < 10) bp.nextlvl(); values.RemoveAt(i); break;//cheat
+                        case 1005:
+                            bp.start = true;
+                            if (bp.nbricks == 0) bp.nextlvl(); values.RemoveAt(i); break;//next level
+                        default: bp.player2 = int.Parse(values[i]); values.RemoveAt(i); break;
                     }
+
                 }
-                Thread.Yield();
 
             }
 
@@ -145,52 +118,24 @@ namespace WindowsFormsApplication2
                 receiveFromServer = client.Receive(ref endpoint);
                 temp2 = Encoding.ASCII.GetString(receiveFromServer);
                 values2.Add(temp2);
-                if (bp.InvokeRequired)
+                for (int i = 0; i < values2.Count; i++)
                 {
-                    MethodInvoker methodInvokerDelegate = delegate()
+                    switch (int.Parse(values2[i]))
                     {
-                        for (int i = 0; i < values2.Count; i++)
-                        {
-                            switch (int.Parse(values2[i]))
-                            {
-                                case 1000: Environment.Exit(0); break;
-                                case 1001: bp.restart(); values2.RemoveAt(i); break;//restart
-                                case 1002: bp.start = false; values2.RemoveAt(i); break;//pause
-                                case 1003: bp.start = true; values2.RemoveAt(i); break;//resume
-                                case 1004: if (bp.lvl < 10) bp.nextlvl(); values2.RemoveAt(i); break;//cheat
-                                case 1005:
-                                    bp.start = true;
-                                    if (bp.nbricks == 0) bp.nextlvl(); values2.RemoveAt(i); break;//next level
-                     //           case 1006: bp.ballx = int.Parse(Encoding.ASCII.GetString(client.Receive(ref endpoint)));
-                       //             bp.bally = int.Parse(Encoding.ASCII.GetString(client.Receive(ref endpoint)));break;
-                                default: bp.player = int.Parse(values2[i]); values2.RemoveAt(i); break;
-                            }
-                        }
-                    };
-                }
-                else
-                {
-                    for (int i = 0; i < values2.Count; i++)
-                    {
-                        switch (int.Parse(values2[i]))
-                        {
-                            case 1000: Environment.Exit(0); break;
-                            case 1001: bp.restart(); values2.RemoveAt(i); break;//restart
-                            case 1002: bp.start = false; values2.RemoveAt(i); break;//pause
-                            case 1003: bp.start = true; values2.RemoveAt(i); break;//resume
-                            case 1004: if (bp.lvl < 10) bp.nextlvl(); values2.RemoveAt(i); break;//cheat
-                            case 1005:
-                                bp.start = true;
-                                if (bp.nbricks == 0) bp.nextlvl(); values2.RemoveAt(i); break;//next level
-                 //           case 1006: bp.ballx = int.Parse(Encoding.ASCII.GetString(client.Receive(ref endpoint)));
-                   //             bp.bally = int.Parse(Encoding.ASCII.GetString(client.Receive(ref endpoint))); break;
-                            default: bp.player = int.Parse(values2[i]); values2.RemoveAt(i); break;
-                        }
+                        case 1000: Environment.Exit(0); break;
+                        case 1001: bp.restart(); values2.RemoveAt(i); break;//restart
+                        case 1002: bp.start = false; values2.RemoveAt(i); break;//pause
+                        case 1003: bp.start = true; values2.RemoveAt(i); break;//resume
+                        case 1004: if (bp.lvl < 10) bp.nextlvl(); values2.RemoveAt(i); break;//cheat
+                        case 1005:
+                            bp.start = true;
+                            if (bp.nbricks == 0) bp.nextlvl(); values2.RemoveAt(i); break;//next level
+                        default: bp.player = int.Parse(values2[i]); values2.RemoveAt(i); break;
                     }
                 }
-                Thread.Yield();
             }
         }
+
 
         public void KeysPressed()
         {
@@ -282,7 +227,7 @@ namespace WindowsFormsApplication2
                     {
                         sendToClient = Encoding.ASCII.GetBytes("" + 1005);
                         server.Send(sendToClient, sendToClient.Length, RemoteIpEndPoint);
-                       bp.start = true;
+                        bp.start = true;
                         if (bp.nbricks == 0)
                             bp.nextlvl();
 
@@ -291,7 +236,7 @@ namespace WindowsFormsApplication2
                     {
                         sendToServer = Encoding.ASCII.GetBytes("" + 1005);
                         client.Send(sendToServer, sendToServer.Length);
-                        bp.start = true;                       
+                        bp.start = true;
                         if (bp.nbricks == 0)
                             bp.nextlvl();
 
@@ -353,10 +298,10 @@ namespace WindowsFormsApplication2
                 client.Send(sendToServer, sendToServer.Length);
                 sendToServer = Encoding.ASCII.GetBytes("" + bp.bally2);
                 client.Send(sendToServer, sendToServer.Length);
-                
+
             }
-        
-        
+
+
         }
 
         public void endgame()
@@ -396,7 +341,7 @@ namespace WindowsFormsApplication2
             Invalidate();
             bp.updateGame();
             KeysPressed();
-          //  BallPosition();
+            //  BallPosition();
 
 
         }
