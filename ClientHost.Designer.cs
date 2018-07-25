@@ -194,6 +194,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ClientHost";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bricks Breaker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClientHost_FormClosing);
             this.Load += new System.EventHandler(this.ClientHost_Load);

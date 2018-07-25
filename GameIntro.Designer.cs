@@ -96,6 +96,7 @@
             this.MinimizeBox = false;
             this.Name = "GameIntro";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bricks Breaker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameIntro_FormClosing);
             this.Load += new System.EventHandler(this.GameIntro_Load);
